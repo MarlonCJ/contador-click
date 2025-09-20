@@ -1,26 +1,25 @@
 
 
-const aumentar = document.querySelector('#btnAumentar');
-const disminuir = document.querySelector('#btnDisminuir');
+// const aumentar = document.querySelector('#btnAumentar');
+// const disminuir = document.querySelector('#btnDisminuir');
 const resultado = document.querySelector('#resultado');
-const resetear = document.querySelector('#btnReset');
+// const resetear = document.querySelector('#btnReset');
 
 let contador = cargarDesdeLocalStorage();
 
 
-aumentar.addEventListener('click',function(e){
-    contador++;
-    mostrarResult();
-})
+// const botones = {
+//     aumentar : document.querySelector('#btnAumentar'),
+//     disminuir : document.querySelector('#btnDisminuir'),
+//     resetear : document.querySelector('#btnReset'),
+// }
 
-disminuir.addEventListener('click',function(e){
-    contador--;
+document.querySelector('.botones').addEventListener('click', (e) =>{
+    if(e.target.id === 'btnAumentar') contador++;
+    if(e.target.id === 'btnDisminuir') contador--;
+    if(e.target.id === 'btnReset') contador = 0;
     mostrarResult();
-})
 
-resetear.addEventListener('click', function(){
-    contador = 0;
-    mostrarResult();
 })
 
 
