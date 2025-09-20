@@ -1,0 +1,92 @@
+
+:root{
+    --color1 : #335c67;
+    --color2 : #edf6f9;
+    --color3 : #cae9ff;
+    --color4 : #02c39a;
+    --color5 : #e5383b; 
+    --color6 : #fe7f2d;
+    --blanco : #fff;
+
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--color1);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: var(--blanco);
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px 10px #00000048;
+}
+
+.pantalla{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 10px;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: var(--color2);
+    border: 1px solid var(--color1);
+}
+
+.pantalla span{
+    font-size: 30px;
+}
+
+.botones{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.titulo{
+    text-align: center;
+    font-weight: 600;
+    color: var(--color1);
+}
+
+.boton{
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.aumentar{
+    background-color: var(--color4);
+}
+
+.disminuir{
+    background-color: var(--color5);
+    color: var(--blanco)
+}
+
+.resetear{
+    background-color: var(--color6);
+    color: var(--blanco);
+}

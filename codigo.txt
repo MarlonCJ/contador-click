@@ -1,0 +1,181 @@
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Contador de Click</title>
+</head>
+<body>
+    
+    <div class="container">
+        <main class="main">
+        
+            <div class="titulo">
+                <h1>Contador de Click</h1>
+            </div>
+            <div class="pantalla">
+                <span id="resultado"></span>
+            </div>
+            <div class="botones">
+                <button id="btnAumentar" class="boton aumentar">Aumenta</button>
+                <button id="btnDisminuir" class="boton disminuir">Disminuir</button> 
+                <button id="btnReset" class="boton resetear">Resetear</button> 
+            </div>
+            
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+css
+
+
+:root{
+    --color1 : #335c67;
+    --color2 : #edf6f9;
+    --color3 : #cae9ff;
+    --color4 : #02c39a;
+    --color5 : #e5383b; 
+    --color6 : #fe7f2d;
+    --blanco : #fff;
+
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--color1);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: var(--blanco);
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px 10px #00000048;
+}
+
+.pantalla{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 10px;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: var(--color2);
+    border: 1px solid var(--color1);
+}
+
+.pantalla span{
+    font-size: 30px;
+}
+
+.botones{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.titulo{
+    text-align: center;
+    font-weight: 600;
+    color: var(--color1);
+}
+
+.boton{
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.aumentar{
+    background-color: var(--color4);
+}
+
+.disminuir{
+    background-color: var(--color5);
+    color: var(--blanco)
+}
+
+.resetear{
+    background-color: var(--color6);
+    color: var(--blanco);
+}
+
+javascript
+
+
+
+const aumentar = document.querySelector('#btnAumentar');
+const disminuir = document.querySelector('#btnDisminuir');
+const resultado = document.querySelector('#resultado');
+const resetear = document.querySelector('#btnReset');
+
+let contador = cargarDesdeLocalStorage();
+
+
+aumentar.addEventListener('click',function(e){
+    contador++;
+    mostrarResult();
+})
+
+disminuir.addEventListener('click',function(e){
+    contador--;
+    mostrarResult();
+})
+
+resetear.addEventListener('click', function(){
+    contador = 0;
+    mostrarResult();
+})
+
+
+function mostrarResult(){
+    resultado.textContent = contador;
+    guardarEnLocalStorage();
+}
+
+function guardarEnLocalStorage(){
+    try{
+        localStorage.setItem('cont', contador);
+    }catch(error){
+        console.error('No se pudo guardar',error.message);
+    }
+}
+
+function cargarDesdeLocalStorage(){
+    try{
+        let guardar = localStorage.getItem('cont');
+        return guardar ? parseInt(guardar) : 0;
+    }catch(error){
+        console.error('No se pudo cargar',error.message)
+        return 0;
+    }
+}
+
+mostrarResult();
